@@ -1,3 +1,1 @@
-# ecommerce_jap
- proyectos
- 🛒
+# ecommerce-capacitador
