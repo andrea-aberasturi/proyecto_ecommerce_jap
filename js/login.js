@@ -9,9 +9,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
     //const password = document.getElementById('typePasswordX'); //Capturo el password
 
     form.addEventListener('submit', function (e) { //Escucha de evento submit
-        e.preventDefault();
+       // e.preventDefault();
         localStorage.setItem('user', usuario.value); //Guardo el nombre de usuario email
         //localStorage.setItem('password', password.value); //Guardo el password
-       location.assign('home.html')
+       location.href('home.html')
+      // e.stopPropagation();
     });
 });

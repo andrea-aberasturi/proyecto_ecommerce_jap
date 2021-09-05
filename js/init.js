@@ -43,18 +43,20 @@ var getJSONData = function (url) {
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function (e) { //Logueado obligatorio
+document.addEventListener("DOMContentLoaded", function (e) { 
+  
+  //Logueado obligatorio
   const div = document.getElementById('div');//Etiqueta div
   let username = localStorage.getItem('user');//Recupero nombre de usuario
 
   if (username != null) {
-    div.innerHTML = ` <a id="users" class="py-2 d-none d-md-inline-block" href="my-profile.html">`+username+`</a> 
+    div.innerHTML += ` <a id="users" class="py-2 d-none d-md-inline-block" href="my-profile.html">`+username+`</a> 
     `
     location.href = 'home.html'
-    window.stop();
+    //window.stop(); //e.stop.Propagation()
     }
   else{
-    location.href = 'index.html';
+    return location.href = 'index.html';
     }
 
 });
