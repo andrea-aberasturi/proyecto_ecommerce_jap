@@ -44,19 +44,17 @@ var getJSONData = function (url) {
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) { //Logueado obligatorio
-  e.preventDefault();//Evita que se recargue la pag al presionar enviar
   const div = document.getElementById('div');//Etiqueta div
-  const users = document.getElementById('users');//Etiqueta a
   let username = localStorage.getItem('user');//Recupero nombre de usuario
 
-  console.log(username);
-  
   if (username != null) {
     div.innerHTML = ` <a id="users" class="py-2 d-none d-md-inline-block" href="my-profile.html">`+username+`</a> 
     `
+    location.href = 'home.html'
+    window.stop();
     }
   else{
-    location.replace = 'index.html';
+    location.href = 'index.html';
     }
 
 });
