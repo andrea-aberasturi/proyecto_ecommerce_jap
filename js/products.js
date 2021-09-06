@@ -71,9 +71,6 @@ async function mostrar_cars(criteria) {
   }
 }
 
-function name(params) {
-  
-}
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -98,7 +95,7 @@ document.getElementById('clearFilter').addEventListener('click', function () { /
   minCount = undefined;
   maxCount = undefined;
 
-  mostrar_cars(); //Invoco la función luego de ordenarla
+  mostrar_cars(ORDER_ASC_BY_COST); //Invoco la función luego de ordenarla
 });
 
 document.getElementById('range-Count').addEventListener('click', function () { //Rango de precio
@@ -122,7 +119,7 @@ document.getElementById('range-Count').addEventListener('click', function () { /
   else {
     maxCount = undefined;
   }
-  mostrar_cars();
+  mostrar_cars(ORDER_ASC_BY_COST);
 })
 mostrar_cars(ORDER_ASC_BY_COST);
 });

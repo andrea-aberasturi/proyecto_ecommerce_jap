@@ -54,8 +54,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
     `
     location.href = 'home.html'
     }
-  // else{
-  //   return location.href = 'index.html';
-  //   }
+  else{
+    return location.href = 'index.html';
+    }
 
 });
