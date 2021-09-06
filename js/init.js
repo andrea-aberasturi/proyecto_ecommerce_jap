@@ -55,7 +55,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
     location.href = 'home.html'
     }
   // else{
-  //   return location.href = 'index.html';
+  //    location.href = 'index.html';
+  //    e.stopPropagation();
   //   }
 
 });
