@@ -50,13 +50,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let username = localStorage.getItem('user');//Recupero nombre de usuario
 
   if (username != null) {
-    div.innerHTML += ` <a id="users" class="py-2 d-none d-md-inline-block" href="my-profile.html">`+username+`</a> 
+    div.innerHTML = ` <a id="users" class="py-2 d-none d-md-inline-block" href="my-profile.html">`+username+`</a> 
     `
     location.href = 'home.html'
-    //window.stop(); //e.stop.Propagation()
     }
-  else{
-    return location.href = 'index.html';
-    }
+  // else{
+  //   return location.href = 'index.html';
+  //   }
 
 });
