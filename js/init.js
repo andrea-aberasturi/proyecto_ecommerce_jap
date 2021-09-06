@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   const div = document.getElementById('div');//Etiqueta div
   let username = localStorage.getItem('user');//Recupero nombre de usuario
 
-  if (username != null) {
+  if (username != null || username != '') {
     div.innerHTML = ` <a id="users" class="py-2 d-none d-md-inline-block" href="my-profile.html">`+username+`</a> 
     `
     location.href = 'home.html'
