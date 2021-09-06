@@ -52,11 +52,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
   if (username != null) {
     div.innerHTML = ` <a id="users" class="py-2 d-none d-md-inline-block" href="my-profile.html">`+username+`</a> 
     `
-    location.href = 'home.html'
+    location.replace = 'home.html'
     }
-  // else{
-  //    location.href = 'index.html';
-  //    e.stopPropagation();
-  //   }
-
+  else{
+     location.reload = 'index.html';
+    }
 });
