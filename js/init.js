@@ -49,6 +49,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
   const div = document.getElementById('div');//Etiqueta div
   let username = localStorage.getItem('user');//Recupero nombre de usuario
 
+  //ver if else, then, await luego del else
+
   if (username != null) {
     div.innerHTML = ` <a id="users" class="py-2 d-none d-md-inline-block" href="my-profile.html">`+username+`</a> 
     `

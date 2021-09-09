@@ -47,7 +47,9 @@ async function mostrar_cars(criteria) {
     if (((minCount == undefined) || (minCount != undefined && parseInt(elemento.cost) >= minCount)) &&
       ((maxCount == undefined) || (maxCount != undefined && parseInt(elemento.cost) <= maxCount))) {
 
-      contenido += `<div class="list-group-item list-group-item-action">
+      contenido += `
+      <a href= "products-info.html" class="list-group-item list-group-item-action">
+      <div class="list-group-item list-group-item-action">
           <div class="row">
               <div class="col-3">
                   <img src=" ` + elemento.imgSrc + `  " alt="" ` + elemento.description + ` class="img-thumbnail">
@@ -56,7 +58,7 @@ async function mostrar_cars(criteria) {
                   <div class="d-flex w-100 justify-content-between">
                       <h4 class="mb-1">`+ elemento.name + `</h4>
                       <div>
-              <p class= 'precio'> $`+ elemento.cost + `USD</p>
+              <p class= 'precio'> $`+ elemento.cost + ` ` + elemento.currency + ` </p>
                      </div>
                       <small class="text-muted">` + elemento.soldCount + ` artículos</small>
                   </div>
@@ -103,8 +105,8 @@ document.getElementById('range-Count').addEventListener('click', function () { /
   minCount = document.getElementById("rangeCountMin").value;
   maxCount = document.getElementById("rangeCountMax").value;
 
-  console.log(minCount);
-  console.log(maxCount);
+  // console.log(minCount);
+  // console.log(maxCount);
 
   if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0) {
     minCount = parseInt(minCount);
