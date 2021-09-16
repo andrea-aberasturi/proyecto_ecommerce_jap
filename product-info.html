@@ -26,18 +26,69 @@
       <div id="div">
         <a id="users" class="py-2 d-none d-md-inline-block" href="my-profile.html">Mi sesión</a>
       </div>
-
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 19/09/2021) y Entrega 4 (Fecha de entrega:
-        03/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <main role="main">
+    <div class="container p-5">
+      <div>
+        <h2>Descripción del producto</h2>
+        <!-- <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 19/09/2021) y Entrega 4 (Fecha de entrega:
+        03/10/2021).</p> -->
+        <p class="lead">Encontraras aquí toda la información del producto seleccionado.</p>
+        <h3 id="productsName"></h3>
+        </hr class="my-3">
+        <dl>
+          <dt>Descripción</dt>
+          <dd>
+            <p id="productsDescription"></p>
+          </dd>
+
+          <dt>Cantidad de productos</dt>
+          <dd>
+            <p id="count"></p>
+          </dd>
+
+          <dt>Imágenes ilustrativas</dt>
+          <dd>
+            <div class="row text-center text-lg-left pt-2" id="productGallery">
+          </dd>
+          <dt>Comentarios</dt>
+          <dd>
+            <p id="comentarios"></p>
+          </dd>
+
+          <!-- estrellitas -->
+          <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <div id="ocultar" >
+            <span id="1estrella" onclick="calificar(this)" style="cursor:pointer" class="fa fa-star checked"></span>
+            <span id="2estrella" onclick="calificar(this)" style="cursor: pointer" class="fa fa-star checked"></span>
+            <span id="3estrella" onclick="calificar(this)" style="cursor: pointer" class="fa fa-star checked"></span>
+            <span id="4estrella" onclick="calificar(this)" style="cursor: pointer" class="fa fa-star"></span>
+            <span id="5estrella" onclick="calificar(this)" style="cursor: pointer" class="fa fa-star"></span>
+          </div>
+
+          <!-- Para agregar comentario -->
+          <!-- <hr> -->
+          <dt>Agregar Comentario</dt>
+          </br>
+          <div class="col-lg-12">
+            <form>
+              <textarea placeholder="Mi comentario" id="newComentario" class='form-control' name="comment"></textarea>
+              </br>
+              <input id="buton" type="button" value="Enviar" onclick="commentrio()">
+              
+              </fieldset>
+              
+            </form>
+          </div>
+        </dl>
+      </div>
+      <!-- <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p> -->
     </div>
-  </div>
+
+    </div>
+  </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">

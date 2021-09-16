@@ -48,7 +48,7 @@ async function mostrar_cars(criteria) {
       ((maxCount == undefined) || (maxCount != undefined && parseInt(elemento.cost) <= maxCount))) {
 
       contenido += `
-      <a href= "products-info.html" class="list-group-item list-group-item-action">
+      <a href= "product-info.html" class="list-group-item list-group-item-action"> 
       <div class="list-group-item list-group-item-action">
           <div class="row">
               <div class="col-3">
@@ -66,6 +66,7 @@ async function mostrar_cars(criteria) {
               </div>
           </div>
       </div>
+      </a>
      `
     }
     document.getElementById('prod-container').innerHTML = contenido;
@@ -79,8 +80,22 @@ async function mostrar_cars(criteria) {
 //elementos HTML presentes. d-none ocultar de pantalla
 document.addEventListener("DOMContentLoaded", function (e) {
 
+const research =  document.getElementById('search'); //capturo el imput del buscador
+const button = document.getElementById('button'); //capturo el boton
+//buscador
+const filter = ()=>{
+  console.log(research.value);
+  const contenido  = research.value.toLowerCase();
+  for (let arraysCar  of arraysCars){
+    let name = arraysCar.name.toLowerCase();
+    if(name.indexOf(contenido) !== -1){
 
-document.getElementById('sortAsc').addEventListener('click', function () { //orden ascendente
+    }
+  }
+}
+button.addEventListener('click', filter);
+
+document.getElementById('sortAsc').addEventListener('click', function () { //Orden ascendente
   mostrar_cars(ORDER_ASC_BY_COST);
 })
 document.getElementById('sortDsc').addEventListener('click', function () { //Orden descendente

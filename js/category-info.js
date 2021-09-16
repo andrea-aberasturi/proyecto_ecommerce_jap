@@ -18,26 +18,6 @@ function showImagesGallery(array){
         document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
     }
 }
-//Función para mostrar el contenido desde un json
-
-getJSONData(PRODUCT_INFO_URL).then(function(result){
-    if (result.status === "ok"){
-        products = result.data;
-        console.log(products);
-
-        let productsDescription = document.getElementById('content');
-        let productsname = document.getElementById('name');
-        let relacionados = document.getElementById('rel');
-        let categ = document.getElementById('categ');
-
-        categ.innerHTML = products.category;
-        relacionados.innerHTML = products.relatedProducts;
-        productsname.innerHTML = products.name;
-        productsDescription.innerHTML = products.description;
-
-    }
-})
-
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
