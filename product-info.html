@@ -57,7 +57,7 @@
             <p id="comentarios"></p>
           </dd>
 
-          <!-- estrellitas -->
+          <!-- estrellitas
           <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
           <div id="ocultar" >
@@ -66,7 +66,7 @@
             <span id="3estrella" onclick="calificar(this)" style="cursor: pointer" class="fa fa-star checked"></span>
             <span id="4estrella" onclick="calificar(this)" style="cursor: pointer" class="fa fa-star"></span>
             <span id="5estrella" onclick="calificar(this)" style="cursor: pointer" class="fa fa-star"></span>
-          </div>
+          </div> -->
 
           <!-- Para agregar comentario -->
           <!-- <hr> -->
@@ -76,9 +76,16 @@
             <form>
               <textarea placeholder="Mi comentario" id="newComentario" class='form-control' name="comment"></textarea>
               </br>
-              <input id="buton" type="button" value="Enviar" onclick="commentrio()">
-              
               </fieldset>
+              <label for="contador">Calificar</label>
+              <select class="form-control" id="contador">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+              <input id="buton" type="button" value="Enviar" onclick="commentrio()">
               
             </form>
           </div>
