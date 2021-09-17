@@ -67,16 +67,17 @@ function voirComment(array) {
     }
 }
 
+//Función estrellitas
 function stars(star) {
-    let score = parseInt(star);
+    let score = parseInt(star); //Convierto a número
     let agregar = '';
     for (let index = 1; index <= score; index++) {
-         agregar = `
+        agregar += `
          <span id="1estrella" style="cursor:pointer" class="fa fa-star checked"></span>
          `
     }
-    for (let i = score+1; i <=5; i++) {
-         agregar = `
+    for (let i = score + 1; i <= 5; i++) {
+        agregar += `
          <span id="4estrella" style="cursor: pointer" class="fa fa-star"></span>
          `
     }
@@ -98,9 +99,16 @@ var minuit = hora.getUTCMinutes();
 
 function commentrio() {
     let capturar = newcomment.value;
-    insertar.innerHTML += `<hr class="my-3">${capturar}<br><br/>
-                            ${usuario} &emsp; ${year}-${month}-${day} ${heur}:${minuit}`
+    let estrellitas = document.getElementById('contador').value;
+    // console.log(estrellitas);
+    // console.log(capturar);
 
+    insertar.innerHTML += `<hr class="my-3">
+                        ${capturar}<br><br>
+                    <div class="d-flex w-100 justify-content-between">
+                           ${usuario} &emsp; ${year}-${month}-${day} ${heur}:${minuit}
+                         <p>${stars(estrellitas)}</p>
+                     </div>`
 }
 
 
