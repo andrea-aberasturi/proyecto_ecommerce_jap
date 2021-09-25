@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     e.preventDefault();
     localStorage.setItem('user', usuario.value); //Guardo el nombre de usuario email
     //localStorage.setItem('password', password.value); //Guardo el password
-    location.href = 'home.html';
+    window.location.href = 'home.html';
     e.stopPropagation();
   });
 });
