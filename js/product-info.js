@@ -31,10 +31,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
             let productsDescription = document.getElementById('productsDescription');
             let productsname = document.getElementById('productsName');
             let product = document.getElementById('count');
+            let related = document.getElementById('related');
 
             product.innerHTML = arraysCars.soldCount;
             productsname.innerHTML = arraysCars.name;
             productsDescription.innerHTML = arraysCars.description;
+            related.innerHTML = arraysCars.relatedProducts[0]; //Products related
 
             showImagesGallery(arraysCars.images); //Imagenes en forma de galeria
         }
