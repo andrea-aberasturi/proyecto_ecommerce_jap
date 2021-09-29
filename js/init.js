@@ -51,7 +51,16 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 
   if (username != null) {
-    div.innerHTML = ` <a id="users" class="py-2 d-none d-md-inline-block" href="my-profile.html">`+username+`</a> 
+    div.innerHTML = `
+    <div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    `+username+`</a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="cart.html">Mi carrito</a>
+          <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+          <a class="dropdown-item" href="index.html">Cerrar Sesión</a>
+        </div>
+      </div>
     `
     location.replace = 'home.html'
     }

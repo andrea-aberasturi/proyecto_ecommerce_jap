@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
             product.innerHTML = arraysCars.soldCount;
             productsname.innerHTML = arraysCars.name;
             productsDescription.innerHTML = arraysCars.description;
-            related.innerHTML = arraysCars.relatedProducts[0]; //Products related
 
             showImagesGallery(arraysCars.images); //Imagenes en forma de galeria
         }
