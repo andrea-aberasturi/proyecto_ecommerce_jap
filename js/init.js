@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     `+username+`</a>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <a class="dropdown-item" href="cart.html">Mi carrito</a>
           <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
           <a class="dropdown-item" href="index.html">Cerrar Sesión</a>
         </div>
@@ -65,6 +64,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
     location.replace = 'home.html'
     }
   else{
-     window.location.href = 'index.html';
+     window.location.href = './index.html';
+     
+   
     }
 });

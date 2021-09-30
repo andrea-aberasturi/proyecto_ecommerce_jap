@@ -19,25 +19,25 @@ function showImagesGallery(array) {
 }
 
 //Función para mostrar imagenes en forma de carrusel dinamico
-function showImagesCarrusel (array) {
+function showImagesCarrusel(array) {
 
-    let html = '';
+    let html = ` <div class="carousel-item active">
+    <img src="img/prod1.jpg" class="d-block w-100" alt="muestra1">
+</div>`;
 
     for (let i = 1; i < array.length; i++) {//controlar 1
         let images = array[i];
 
         html += `
         <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="${images[0]} " class="d-block w-100" alt="...">
-              </div>
+           
               <div class="carousel-item">
-                <img src="${images} " class="d-block w-100" alt="...">
+                <img src="${images} " class="d-block w-100" alt="">
               </div>
             </div>`
 
-            document.getElementById('carouselExampleIndicators').innerHTML = html;
-        
+        document.getElementById('carouselExampleIndicators').innerHTML = html;
+
     }
 }
 
@@ -61,9 +61,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
             productsname.innerHTML = arraysCars.name;
             productsDescription.innerHTML = arraysCars.description;
 
-            showImagesGallery(arraysCars.images); //Imagenes en forma de galeria
+            // showImagesGallery(arraysCars.images); //Imagenes en forma de galeria
 
-            showImagesCarrusel(arraysCars.images);
+            showImagesCarrusel(arraysCars.images);//Imagenes en carrusel
         }
     });
 });
