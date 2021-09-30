@@ -21,20 +21,22 @@ function showImagesGallery(array) {
 //Función para mostrar imagenes en forma de carrusel dinamico
 function showImagesCarrusel(array) {
 
-    let html = ` <div class="carousel-item active">
-    <img src="img/prod1.jpg" class="d-block w-100" alt="muestra1">
-</div>`;
+    let html = '';
+
+     html += `
+     <div class="carousel-item active">
+        <img src="${array[0]} " class="d-block w-100" alt="muestra1">
+    </div>
+    `;
 
     for (let i = 1; i < array.length; i++) {//controlar 1
         let images = array[i];
 
         html += `
-        <div class="carousel-inner">
-           
               <div class="carousel-item">
                 <img src="${images} " class="d-block w-100" alt="">
               </div>
-            </div>`
+            `
 
         document.getElementById('carouselExampleIndicators').innerHTML = html;
 
@@ -50,6 +52,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
             arraysCars = resultado.data;
             mostrarCars(arraysCars);
             // console.log(arraysCars);
+            //Nueva petición fetch
+    getJSONData(PRODUCT_INFO_URL).then(resultado2 =>{
+        if (resultado2.status === 'ok'){
+            carsRelated = resultado2.data[0];
+        }
+    })
 
             //Para desplegar contenido en HTML
             let productsDescription = document.getElementById('productsDescription');

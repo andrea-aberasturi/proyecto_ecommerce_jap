@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     `+username+`</a>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
-          <a class="dropdown-item" href="index.html">Cerrar Sesión</a>
+          <a class="dropdown-item" href="index.html" onclick = 'cerrarSesion()'>Cerrar Sesión</a>
         </div>
       </div>
     `
@@ -65,7 +65,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
     }
   else{
      window.location.href = './index.html';
-     
-   
     }
 });
+
+//Creo función para borrar usuario
+function cerrarSesion(){
+  localStorage.clear();
+}
