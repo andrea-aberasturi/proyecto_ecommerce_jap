@@ -17,6 +17,30 @@ function showImagesGallery(array) {
         document.getElementById("productGallery").innerHTML = htmlContentToAppend;//Indico donde coloco las imagenes
     }
 }
+
+//Función para mostrar imagenes en forma de carrusel dinamico
+function showImagesCarrusel (array) {
+
+    let html = '';
+
+    for (let i = 1; i < array.length; i++) {//controlar 1
+        let images = array[i];
+
+        html += `
+        <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="${images[0]} " class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="${images} " class="d-block w-100" alt="...">
+              </div>
+            </div>`
+
+            document.getElementById('carouselExampleIndicators').innerHTML = html;
+        
+    }
+}
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -38,6 +62,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
             productsDescription.innerHTML = arraysCars.description;
 
             showImagesGallery(arraysCars.images); //Imagenes en forma de galeria
+
+            showImagesCarrusel(arraysCars.images);
         }
     });
 });
