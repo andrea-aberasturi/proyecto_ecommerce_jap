@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             //Nueva petición fetch
     getJSONData(PRODUCT_INFO_URL).then(resultado2 =>{
         if (resultado2.status === 'ok'){
-            carsRelated = resultado2.data[0];
+            carsRelated = resultado2.data;
         }
     })
 
@@ -170,6 +170,11 @@ function mostrarCars(array) {
         document.getElementById("prod-container").innerHTML = htmlContenido;
 
     }
+}
+
+//Función para mostrar relacionados
+function mostrarRelated (mostrarCars){
+
 }
 
   // var getJSONData = async function(url){
