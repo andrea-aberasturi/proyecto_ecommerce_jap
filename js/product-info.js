@@ -1,22 +1,3 @@
-//Función para mostrar imagenes en forma de galeria
-function showImagesGallery(array) {
-
-    let htmlContentToAppend = "";
-
-    for (let i = 0; i < array.length; i++) {
-        let imageSrc = array[i];
-
-        htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
-            </div>
-        </div>
-        `
-
-        document.getElementById("productGallery").innerHTML = htmlContentToAppend;//Indico donde coloco las imagenes
-    }
-}
 
 //Función para mostrar imagenes en forma de carrusel dinamico
 function showImagesCarrusel(array) {
@@ -68,8 +49,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
             product.innerHTML = arraysCars.soldCount;
             productsname.innerHTML = arraysCars.name;
             productsDescription.innerHTML = arraysCars.description;
-
-            // showImagesGallery(arraysCars.images); //Imagenes en forma de galeria
 
             showImagesCarrusel(arraysCars.images);//Imagenes en carrusel
         }
