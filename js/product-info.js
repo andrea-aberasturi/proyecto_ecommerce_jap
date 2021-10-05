@@ -33,12 +33,16 @@ document.addEventListener("DOMContentLoaded", function (e) {
             arraysCars = resultado.data;
             mostrarCars(arraysCars);
             // console.log(arraysCars);
-            //Nueva petición fetch
-    getJSONData(PRODUCT_INFO_URL).then(resultado2 =>{
-        if (resultado2.status === 'ok'){
-            carsRelated = resultado2.data;
-        }
-    })
+            // voirRelated(arraysCars.relatedProducts);
+            getJSONData(PRODUCT_INFO_URL).then(function(response2){
+                if (response2.data === 'ok'){
+                    arraysCarsAll = response2.data;
+                    voirRelated(arraysCarsAll.relatedProducts);
+                    console.log(PRODUCT_INFO_URL)
+
+                }
+            })
+            
 
             //Para desplegar contenido en HTML
             let productsDescription = document.getElementById('productsDescription');
@@ -49,11 +53,28 @@ document.addEventListener("DOMContentLoaded", function (e) {
             product.innerHTML = arraysCars.soldCount;
             productsname.innerHTML = arraysCars.name;
             productsDescription.innerHTML = arraysCars.description;
+            // related.innerHTML = arraysCars.relatedProducts[0];
 
             showImagesCarrusel(arraysCars.images);//Imagenes en carrusel
+            
         }
     });
 });
+
+//Función para mostrar relacionados
+let relateds = [];
+function voirRelated (array){
+    let add = '';
+    for (let i= 0; i< array.length; i++){
+        let relacionado = array[i];
+        add += `
+        <div> ${relateds[relacionado].name}</div>`
+    }
+
+    document.getElementById('related').innerHTML = add;
+}
+
+
 
 // Obtengo el Json de Comentarios
 getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (coment) {
@@ -151,10 +172,7 @@ function mostrarCars(array) {
     }
 }
 
-//Función para mostrar relacionados
-function mostrarRelated (mostrarCars){
 
-}
 
   // var getJSONData = async function(url){
   //     var result = {};
