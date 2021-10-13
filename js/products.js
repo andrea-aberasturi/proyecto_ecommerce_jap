@@ -37,7 +37,7 @@ function sortProducts(criteria, array) {
 var arraysCars = []; //Creo un Array para luego agregarle contenido
 async function mostrar_cars(criteria) {
   let promise = await fetch('https://japdevdep.github.io/ecommerce-api/product/all.json');//Petición fetch
-  let data = await promise.json();  //creo json
+  let data = await promise.json();  //obtengo en fmato json
 
   data = sortProducts(criteria, data)
   let contenido = "";
@@ -80,16 +80,17 @@ async function mostrar_cars(criteria) {
 //elementos HTML presentes. d-none ocultar de pantalla
 document.addEventListener("DOMContentLoaded", function (e) {
 
-const research =  document.getElementById('search'); //capturo el imput del buscador
+  //Research
+const research =  document.getElementById('search'); //capturo el input del buscador
 const button = document.getElementById('button'); //capturo el boton
-//buscador
+
 const filter = ()=>{
-  console.log(research.value);
+  // console.log(research.value);
   const contenido  = research.value.toLowerCase();
   for (let arraysCar  of arraysCars){
     let name = arraysCar.name.toLowerCase();
     if(name.indexOf(contenido) !== -1){
-
+      
     }
   }
 }

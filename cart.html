@@ -46,7 +46,7 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
+  <!-- <div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h4 class="alert-heading">¡A trabajar! :)</h4>
       <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega:
@@ -54,6 +54,23 @@
       <hr>
       <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
     </div>
+  </div> -->
+  <div class="container p-5" id="myCarrito">
+    <table class="table">
+      <thead>
+        <caption>MI CARRITO</caption>
+        <tr>
+          <th scope="col">PRODUCTO</th>
+          <th scope="col">DESCRIPCIÓN</th>
+          <th scope="col">CANTIDAD</th>
+          <th scope="col">TOTAL</th>
+        </tr>
+      </thead>
+      <tbody id="body"></tbody>
+      <tfoot id="foot"></tfoot>
+    </table>
+
+
   </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">

@@ -4,18 +4,22 @@ function showImagesCarrusel(array) {
 
     let html = '';
 
-     html += `
+     html += `<div class = container.fluid>
      <div class="carousel-item active">
-        <img src="${array[0]} " class="d-block w-100" alt="muestra1">
+        <img src="${array[0]} " class="d-block w-60 img-fluid" alt="muestra1">
     </div>
+    </div>
+
     `;
 
-    for (let i = 1; i < array.length; i++) {//controlar 1
+    for (let i = 1; i < array.length; i++) {
         let images = array[i];
 
         html += `
+        <div class = container.fluid>
               <div class="carousel-item">
-                <img src="${images} " class="d-block w-100" alt="">
+                <img src="${images} " class="d-block w-60 img-fluid"  alt="">
+              </div>
               </div>
             `
 
@@ -28,32 +32,27 @@ function showImagesCarrusel(array) {
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
-    getJSONData(PRODUCT_INFO_URL).then(function (resultado) { // para mostrar autos
+    getJSONData(PRODUCT_INFO_URL).then(function (resultado) { // para mostrar auto Chevrolet
         if (resultado.status === 'ok') {
             arraysCars = resultado.data;
             mostrarCars(arraysCars);
-            // console.log(arraysCars);
-            // voirRelated(arraysCars.relatedProducts);
-            getJSONData(PRODUCT_INFO_URL).then(function(response2){
-                if (response2.data === 'ok'){
-                    arraysCarsAll = response2.data;
-                    voirRelated(arraysCarsAll.relatedProducts);
-                    console.log(PRODUCT_INFO_URL)
-
-                }
-            })
+    getJSONData(PRODUCTS_URL).then(function(resultado2){ //para mostrar todos los autos y llegar al relacionado
+        if (resultado2.status === 'ok'){
+            arraysProducts = resultado2.data;
+            // console.log(arraysProducts);
+            voirRelated(arraysProducts, arraysCars.relatedProducts);//Uso función para mostrar relateds
+        }
+    })
             
 
             //Para desplegar contenido en HTML
             let productsDescription = document.getElementById('productsDescription');
             let productsname = document.getElementById('productsName');
             let product = document.getElementById('count');
-            let related = document.getElementById('related');
 
             product.innerHTML = arraysCars.soldCount;
             productsname.innerHTML = arraysCars.name;
             productsDescription.innerHTML = arraysCars.description;
-            // related.innerHTML = arraysCars.relatedProducts[0];
 
             showImagesCarrusel(arraysCars.images);//Imagenes en carrusel
             
@@ -62,18 +61,36 @@ document.addEventListener("DOMContentLoaded", function (e) {
 });
 
 //Función para mostrar relacionados
-let relateds = [];
-function voirRelated (array){
+function voirRelated (allProducts, relatedProduct){
+    // console.log(relatedProduct);
     let add = '';
-    for (let i= 0; i< array.length; i++){
-        let relacionado = array[i];
-        add += `
-        <div> ${relateds[relacionado].name}</div>`
+
+    for (let i= 0; i< relatedProduct.length; i++){
+        let relacionado = relatedProduct[i];
+        add += ` 
+        <h6> ${allProducts[relacionado].name} </h6>
+        
+        <div class="col-lg-3 col-md-4 col-6">
+        <div class="d-block mb-4 h-100">
+   
+        <img src=${allProducts[relacionado].imgSrc} class="img-fluid"> 
+        </div>
+        </div>`
     }
 
     document.getElementById('related').innerHTML = add;
 }
 
+// let relateds = [];
+// function voirRelated(param) {
+//     let add = '';
+//     for (let i =0; i<param.length; i++){
+//         let relacionado = param[i];
+//         add += `
+//         <h5>${relateds[relacionado]} </h5>`
+//     }
+//     document.getElementById('related').innerHTML = add;
+// }
 
 
 // Obtengo el Json de Comentarios
@@ -90,7 +107,7 @@ function voirComment(array) {
     let voir = '';
     for (let i = 0; i < array.length; i++) {
         let comment = array[i];
-        voir += `
+        voir = `
           <hr class'my-3'>
              <div class="d-flex w-100 justify-content-between">
                 <p> ${comment.description} </p></hr>
@@ -98,7 +115,7 @@ function voirComment(array) {
              </div>
                  <p class="text-end"> ${comment.user}  &emsp;  ${comment.dateTime} </p>
           `
-        document.getElementById('comentarios').innerHTML = voir;
+        document.getElementById('comentarios').innerHTML += voir;
     }
 }
 
