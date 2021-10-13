@@ -26,14 +26,14 @@ document.addEventListener("DOMContentLoaded", function(e){
         htmlCarrt += `
         <tr>
         <td>  <div class="col-lg-3 col-md-4 col-6">
-        <div class="d-block mb-4 h-100">
-            <img class="img-fluid" src=" ${productos.src} " alt="">
+            <div class="d-block mb-4 h-100">
+                <img class="img-fluid" src=" ${productos.src} " alt="">
+            </div>
         </div>
-    </div>
-        </td>
-        <td>${productos.name} </td>
-        <td><input type= 'number'value=${productos.count} oninput= 'subTotal(this.value)' ></td>
-        <td>${productos.unitCost*productos.count} ${productos.currency}</td>
+            </td>
+            <td>${productos.name} </td>
+                <td><input  class="border" type='number'value=${productos.count} oninput= 'subTotal(this.value)' ></td>
+                    <td>${productos.unitCost*productos.count} ${productos.currency}</td>
       </tr>`
     }
        //Para desplejar contenido en HTML
