@@ -85,8 +85,9 @@ const research =  document.getElementById('search'); //capturo el input del busc
 const button = document.getElementById('button'); //capturo el boton
 
 const filter = ()=>{
-  // console.log(research.value);
   const contenido  = research.value.toLowerCase();
+  console.log(contenido);
+
   for (let arraysCar  of arraysCars){
     let name = arraysCar.name.toLowerCase();
     if(name.indexOf(contenido) !== -1){
