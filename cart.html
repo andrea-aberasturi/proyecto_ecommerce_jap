@@ -75,13 +75,13 @@
       <tbody id="body"></tbody>
       <tfoot id="foot">
         <tr>
-          <th scope="col">SUBTOTAL</th>
-          <td>
+          <!-- <th scope="col">SUBTOTAL</th> -->
+          <!-- <td> -->
             <!-- <div class="btn-group" role="group" aria-label="Basic example">
               <button  id="uyu" type="button" class="btn btn-primary" onclick="convertirMoneda('UYU')">UYU</button>
               <button id="usd" type="button" class="btn btn-primary" onclick="convertirMoneda('USD')">USD</button>
             </div> -->
-          </td>
+          <!-- </td> -->
           <td id="ici"></td>
         </tr>
       </tfoot>
@@ -95,19 +95,37 @@
         <h5 class="mb-3">Tipo de Envío</h5>
         <div class="custom-control custom-radio">
           <input id="premium" name="publicationType" type="radio" class="custom-control-input" checked="" required="">
-          <label class="custom-control-label" for="premium">Premium (15%)</label>
+          <label class="custom-control-label" for="premium">Premium 2 a 5 días(15%)</label>
         </div>
         <div class="custom-control custom-radio">
           <input id="express" name="publicationType" type="radio" class="custom-control-input" required="">
-          <label class="custom-control-label" for="express">Express (7%)</label>
+          <label class="custom-control-label" for="express">Express 5 a 8 días (7%)</label>
         </div>
         <div class="custom-control custom-radio">
           <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
-          <label class="custom-control-label" for="standardradio">Estándar (5%)</label>
+          <label class="custom-control-label" for="standardradio">Estándar 12 a 15 días(5%)</label>
         </div>
         <div class="row">
           <button type="button" class="m-1 btn btn-link" data-toggle="modal" data-target="#contidionsModal">Ver
             condiciones</button>
+        </div>
+
+        <div class="container">
+          <h5 class="mb-3">Costos</h5>
+          <table class=" table table-responsive">
+            <tr>
+              <th>SubTotal</th>
+              <td>USD 300</td>
+            </tr>
+            <tr>
+              <th>Costo de Envío</th>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Total</th>
+              <td></td>
+            </tr>
+          </table>
         </div>
         
         <h5 class="mt-3">Detalle de Envío</h5>

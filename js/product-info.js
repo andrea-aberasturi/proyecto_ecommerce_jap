@@ -70,10 +70,12 @@ function voirRelated (allProducts, relatedProduct){
         add += ` 
         <h6> ${allProducts[relacionado].name} </h6>
         
-        <div class="col-lg-3 col-md-4 col-6">
-        <div class="d-block mb-4 h-100">
+        <div class="row row-cols-1 row-cols-md-1 g-1">
+        <div class="col">
+        <div class="card">
    
-        <img src=${allProducts[relacionado].imgSrc} class="img-fluid"> 
+        <img src=${allProducts[relacionado].imgSrc} class="card-img-top"> 
+        </div>
         </div>
         </div>`
     }

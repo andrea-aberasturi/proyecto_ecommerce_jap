@@ -47,12 +47,35 @@
     </div>
   </nav>
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+    <form action="#">
+      <div class="mb-3">
+        <label for="exampleInputName" class="form.label">Nombre</label>
+        <input type="text" class="form-control" id="name" placeholder="Frida" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputSurname" class="form.label">Apellido</label>
+        <input type="text" class="form-control" id="surname" placeholder="Kahlo" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="FridaKahlo@gmail.com" required>
+        
+      <div class="mb-3">
+        <label for="exampleInputNumber" class="form-label">Edad</label>
+        <input type="number" class="form-control" id="age" min="18" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPhone" class="form-label">Teléfono de Contacto</label>
+        <input type="tel" class="form-control" id="cel" required>
+      </div>
+      <!-- <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Acepto los términos y condiciones</label>
+      </div> -->
+      <button type="submit" class="btn btn-primary" id="submit" onsubmit="false">Guardar</button>
+    </form>
+    
   </div>
   <footer class="text-muted bg-light">
     <div class="container">

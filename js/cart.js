@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             </td>
             <td>${productos.name} </td>
                 <td><input class="border product" data-currency ='${productos.currency}' data-cost='${productos.unitCost}' type='number'value=${productos.count} id='${i}' min='1' onchange = "subTotal(this.value,${productos.unitCost}, ${i}, '${productos.currency}')"></td>
-                    <td class='td' id='cost${i}'>${productos.unitCost * productos.count}${productos.currency}</td>
+                    <td class='td' id='cost${i}'data-cost='${productos.unitCost* productos.count }'>${productos.unitCost * productos.count} ${productos.currency}</td>
       </tr>`
         }
         //Para desplegar contenido en HTML
@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 //     for (let input of inputs) {
 //         input.addEventListener('change', (e) => {
 //             let cost = parseInt(e.target.dataset.cost);
+                // console.log('El costo es: ' , cost)
 //             let val = parseInt(e.target.value);
 //             let i = e.target.getAttribute('id');
 //             let sumaTotal = cost * val;
@@ -65,12 +66,12 @@ function subTotal(valor, unitCost, id, currency) {
     // console.log(costos)
     costos.innerHTML = value + currency;
     //Otra función aquí
+    sumaTotal()
 }
 
-// for (let i = 0; i< costos.length; i++) {
-//     let element = costos[i]
-//     total += parseFloat(element.firstChild.data.value);
-//     console.log(total);
-
-// }
-// document.getElementById('ici').innerHTML = total
+function sumaTotal(){
+    let tds = document.getElementsByClassName('td');
+    for (let td of tds){
+        console.log(parseFloat(td.innerHTML))
+        }
+}
