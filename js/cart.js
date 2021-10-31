@@ -1,5 +1,7 @@
 const CARRT = 'https://japdevdep.github.io/ecommerce-api/cart/654.json';
-
+let productCost = 0;
+let productCount = 0;
+let comissionPercentage = 0.13;
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -72,6 +74,8 @@ function subTotal(valor, unitCost, id, currency) {
 function sumaTotal(){
     let tds = document.getElementsByClassName('td');
     for (let td of tds){
-        console.log(parseFloat(td.innerHTML))
+        // console.log(parseFloat(td.innerHTML))
+        let suma = parseFloat(td.innerHTML)+ parseFloat(td.innerHTML)
+        console.log(suma)
         }
 }

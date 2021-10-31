@@ -42,7 +42,7 @@
   <div class="text-center p-4"> <br />
     <h2 align='center'>Productos</h2>
     <p class="lead">Verás aquí todas los productos de categoría autos del sitio.</p>
-  </div> <br />
+  </div> <br>
   <div class="container">
     <div class="row">
       <div class="col text-right">
@@ -51,8 +51,6 @@
           <div class="">
             <input oninput="search" type="search" id="search" size="50" placeholder="Busca productos, marcas y más...">
             <button id="button" style="margin-right: 30px;" type="button" class="btn btn-light">Buscar</button>
-
-            
           </div>
 
           <label class="btn btn-light active" id="sortDsc">
@@ -91,30 +89,36 @@
         </div>
       </div>
     </div>
-    <div class="container" id="prod-container"></div>
-    <br /><br /><br />
-    <footer class="text-muted bg-light">
+
+    <div class="album py-5 bg-light">
       <div class="container">
-        <p class="float-right">
-          <a href="#">Volver arriba</a>
-        </p>
-        <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-        <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+        <div class="row" id="prod-container">
+        </div>
       </div>
-   
-    </footer>
-    <div id="spinner-wrapper">
-      <div class="lds-ring">
-        <!-- <div></div>
+    </div>
+        <br /><br /><br />
+        <footer class="text-muted bg-light">
+          <div class="container">
+            <p class="float-right">
+              <a href="#">Volver arriba</a>
+            </p>
+            <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+            <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+          </div>
+
+        </footer>
+        <div id="spinner-wrapper">
+          <div class="lds-ring">
+            <!-- <div></div>
         <div></div>
         <div></div>
         <div></div> -->
-      </div>
-    </div>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/products.js"></script>
+          </div>
+        </div>
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/init.js"></script>
+        <script src="js/products.js"></script>
 </body>
 
 </html>

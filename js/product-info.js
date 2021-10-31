@@ -4,10 +4,9 @@ function showImagesCarrusel(array) {
 
     let html = '';
 
-     html += `<div class = container.fluid>
+     html += `
      <div class="carousel-item active">
         <img src="${array[0]} " class="d-block w-60 img-fluid" alt="muestra1">
-    </div>
     </div>
 
     `;
@@ -16,10 +15,8 @@ function showImagesCarrusel(array) {
         let images = array[i];
 
         html += `
-        <div class = container.fluid>
               <div class="carousel-item">
                 <img src="${images} " class="d-block w-60 img-fluid"  alt="">
-              </div>
               </div>
             `
 
@@ -68,16 +65,15 @@ function voirRelated (allProducts, relatedProduct){
     for (let i= 0; i< relatedProduct.length; i++){
         let relacionado = relatedProduct[i];
         add += ` 
-        <h6> ${allProducts[relacionado].name} </h6>
-        
-        <div class="row row-cols-1 row-cols-md-1 g-1">
-        <div class="col">
-        <div class="card">
-   
-        <img src=${allProducts[relacionado].imgSrc} class="card-img-top"> 
-        </div>
-        </div>
-        </div>`
+        <a href= "product-info.html">
+        <h3 class="m-3">${allProducts[relacionado].name} </h3>
+             <img class="bd-placeholder-img card-img-top"  src=${allProducts[relacionado].imgSrc} >
+          <div class="card-body">
+            <p class="card-text"></p>
+          </div>
+          </a>
+          `
+          
     }
 
     document.getElementById('related').innerHTML = add;
