@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             </td>
             <td>${productos.name} </td>
                 <td><input class="border product" data-currency ='${productos.currency}' data-cost='${productos.unitCost}' type='number'value=${productos.count} id='${i}' min='1' onchange = "subTotal(this.value,${productos.unitCost}, ${i}, '${productos.currency}')"></td>
-                    <td class='td' id='cost${i}'data-cost='${productos.unitCost* productos.count }'>${productos.unitCost * productos.count} ${productos.currency}</td>
+                    <td class='td' id='cost${i}'data-cost='${productos.unitCost * productos.count }'>${productos.unitCost * productos.count} ${productos.currency}</td>
       </tr>`
         }
         //Para desplegar contenido en HTML
@@ -75,7 +75,7 @@ function sumaTotal(){
     let tds = document.getElementsByClassName('td');
     for (let td of tds){
         // console.log(parseFloat(td.innerHTML))
-        let suma = parseFloat(td.innerHTML)+ parseFloat(td.innerHTML)
-        console.log(suma)
-        }
+        const value = td.target.dataset.cost;
+        console.log(value)
+    }
 }
