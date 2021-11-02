@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             </td>
             <td>${productos.name} </td>
                 <td><input class="border product" data-currency ='${productos.currency}' data-cost='${productos.unitCost}' type='number'value=${productos.count} id='${i}' min='1' onchange = "subTotal(this.value,${productos.unitCost}, ${i}, '${productos.currency}')"></td>
-                    <td class='td' id='cost${i}'data-cost='${productos.unitCost * productos.count }'>${productos.unitCost * productos.count} ${productos.currency}</td>
+                    <td class='td' id='cost${i}'data-cost='${productos.unitCost * productos.count}'>${productos.unitCost * productos.count} ${productos.currency}</td>
       </tr>`
         }
         //Para desplegar contenido en HTML
@@ -46,19 +46,19 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     }
     //Otra Función para calcular SubTotal
-// function sumaTotal() {
-//     let inputs = document.getElementsByClassName('product');
-//     for (let input of inputs) {
-//         input.addEventListener('change', (e) => {
-//             let cost = parseInt(e.target.dataset.cost);
-                // console.log('El costo es: ' , cost)
-//             let val = parseInt(e.target.value);
-//             let i = e.target.getAttribute('id');
-//             let sumaTotal = cost * val;
-//             document.getElementById('ici').innerHTML = sumaTotal;
-//         })
-//     }
-// }
+    // function sumaTotal() {
+    //     let inputs = document.getElementsByClassName('product');
+    //     for (let input of inputs) {
+    //         input.addEventListener('change', (e) => {
+    //             let cost = parseInt(e.target.dataset.cost);
+    // console.log('El costo es: ' , cost)
+    //             let val = parseInt(e.target.value);
+    //             let i = e.target.getAttribute('id');
+    //             let sumaTotal = cost * val;
+    //             document.getElementById('ici').innerHTML = sumaTotal;
+    //         })
+    //     }
+    // }
 
 });
 //Función calcular subtotal
@@ -71,11 +71,15 @@ function subTotal(valor, unitCost, id, currency) {
     sumaTotal()
 }
 
-function sumaTotal(){
+function sumaTotal() {
     let tds = document.getElementsByClassName('td');
-    for (let td of tds){
-        // console.log(parseFloat(td.innerHTML))
-        const value = td.target.dataset.cost;
-        console.log(value)
+    //colocar contador
+    let suma = 0
+    for (let td of tds) {
+        // console.log(parseInt(td.innerHTML));
+        suma += parseInt(td.innerHTML) // sumar a contador recorrido antes del for
+       
     }
+    console.log(suma)
+    document.getElementById('totalCost').innerHTML = suma
 }
