@@ -1,7 +1,8 @@
-const CARRT = 'https://japdevdep.github.io/ecommerce-api/cart/654.json';
 let productCost = 0;
 let productCount = 0;
 let comissionPercentage = 0.13;
+let MONEY_SYMBOL = "$";
+let PERCENTAGE_SYMBOL = '%';
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -60,6 +61,28 @@ document.addEventListener("DOMContentLoaded", function (e) {
     //     }
     // }
 
+//Para capturar los eventos change de los radio button y pasarle la función actualiza costo Total
+    document.getElementById('productCost').addEventListener('change', ()=>{
+        productCost =  Number(this.innerHTML);
+        upDateTotal();
+    })
+
+    document.getElementById('premium').addEventListener('change', function(){
+        comissionPercentage = 0.15;
+        upDateTotal();
+    })
+
+    document.getElementById('express').addEventListener('change', function (){
+        comissionPercentage = 0.07;
+        upDateTotal();
+    })
+
+    document.getElementById('standardradio').addEventListener('change', function(){
+        comissionPercentage = 0.05;
+        upDateTotal();
+    })
+
+    
 });
 //Función calcular subtotal
 function subTotal(valor, unitCost, id, currency) {
@@ -71,15 +94,31 @@ function subTotal(valor, unitCost, id, currency) {
     sumaTotal()
 }
 
+//Función calcular valor del Subtotal
 function sumaTotal() {
     let tds = document.getElementsByClassName('td');
     //colocar contador
     let suma = 0
     for (let td of tds) {
         // console.log(parseInt(td.innerHTML));
-        suma += parseInt(td.innerHTML) // sumar a contador recorrido antes del for
-       
+        suma += parseFloat(td.innerHTML) // sumar a contador recorrido antes del for  
     }
-    console.log(suma)
-    document.getElementById('totalCost').innerHTML = suma
+    // console.log(suma)
+    productCost = document.getElementById('productCost').innerHTML = suma;
+}
+
+//Función calcular TOTAL
+function upDateTotal (){
+    let costTotal = document.getElementById('totalCost'); //Capturo elemento HTML para colocar valor del %
+    let comissionCost = document.getElementById('comission');//Capturo el elemento HTML para colocar %
+    let total = document.getElementById('total');//Capturo el elemento HTML para colocar valor TOTAL
+    let subtotal = document.getElementById('productCost').innerHTML;//Capturo el elemento HTML para tomar valor del carrito previo a la suma del envío
+
+    let costTotalToShow =(Math.round(productCost * comissionPercentage * 100) / 100);
+    let percentage = Math.round((comissionPercentage * 100)) + PERCENTAGE_SYMBOL;
+    let addTotal = parseInt(costTotal) + parseInt(subtotal);
+
+    costTotal.innerHTML =costTotalToShow;
+    comissionCost.innerHTML = percentage;
+    total.innerHTML = addTotal;
 }

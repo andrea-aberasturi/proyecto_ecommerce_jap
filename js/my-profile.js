@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         document.getElementById('cel').value = datos.phone;
         document.getElementById('file').value = datos.file;
     }
-});
+
 
 let button = document.getElementById('submit')//Capturo el boton
 
@@ -31,6 +31,7 @@ button.addEventListener('click', function (e) { //Escucha de evento
 
     localStorage.setItem('form', JSON.stringify(contenedor));//Las almaceno en memoria local
 
-
 })
+
+});
 
