@@ -3,9 +3,12 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  >
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
+  <!-- google websites -->
+  <meta name="google-signin-client_id"
+    content="739202395828-os00m39mtfgooamoleohrg8qs39anhtj.apps.googleusercontent.com">
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
@@ -15,47 +18,54 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <style>
-    html, body{
+    html,
+    body {
       height: 100%;
     }
   </style>
 </head>
 
 <body class="text-center">
-  <form id="form"> <!--especifico dónde se envia el formulario-->
-  <div class="container p-5">
+  <form id="form">
+    <!--especifico dónde se envia el formulario-->
+    <div class="container p-5">
       <section class="vh-100 gradient-custom">
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
               <div class="card bg-dark text-white" style="border-radius: 1rem;">
                 <div class="card-body p-5 text-center">
-      
+
                   <div class="mb-md-1 mt-md-1 pb-1">
-                    
+
                     <h2 class="fw-bold mb-2 text-uppercase">Inicie sesión</h2>
                     <p class="text-white-50 mb-5"> Ingresa usuario y contraseña!</p>
-      
+
                     <div class="form-outline form-white mb-4">
-                      <input type="email" id="typeEmailX" name="user_email" class="form-control form-control-lg" placeholder="Ingrese aquí su email" required autofocus/>
+                      <input type="email" id="typeEmailX" name="user_email" class="form-control form-control-lg"
+                        placeholder="Ingrese aquí su email" required autofocus />
                       <label class="form-label" for="typeEmailX" id="email">Email</label>
                     </div>
-      
+
                     <div class="form-outline form-white mb-4">
-                      <input type="password" id="typePasswordX" class="form-control form-control-lg" name="contraseña" placeholder="Ingrese aquí su contraseña" required/>
+                      <input type="password" id="typePasswordX" class="form-control form-control-lg" name="contraseña"
+                        placeholder="Ingrese aquí su contraseña" required />
                       <label class="form-label" for="typePasswordX">Contraseña</label>
                     </div>
-      
-                    <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Olvido su contraseña?</a></p>
-      
-                    <button id="boton-guardar" class="btn btn-outline-light btn-lg px-5" type="onsubmit">Iniciar sesión</button> </br>
+
+                    <p class="small mb-3 pb-lg-2"><a class="text-white-50" href="#!">Olvido su contraseña?</a></p>
+
+                    <div class="g-signin2 btn btn-outline-dark mb-3" data-onsuccess="onSignIn"></div>
+
+                    <button id="boton-guardar" class="btn btn-outline-light btn-lg px-5" type="onsubmit">Iniciar
+                      sesión</button> </br>
                     <p class="mt-5 mb-3 text-muted" _msthash="303186" _msttexthash="86047">© 2021-2022</p>
                   </div>
-      
+
                   <div>
                     <p class="mb-0">No tienes una cuenta? <a href="#!" class="text-white-50 fw-bold">Registrate</a></p>
                   </div>
-      
+
                 </div>
               </div>
             </div>
@@ -64,9 +74,17 @@
       </section>
       <p class="mb-0"></p>
     </div>
-  </div>
-</form>
-
+    </div>
+  </form>
+  <script>function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }</script>
   <script src="js/login.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
+
 </html>

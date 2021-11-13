@@ -141,7 +141,7 @@
       </div>
     </form>
 
-    <!-- otro form -->
+    <!-- form de Envío -->
 
     <form class="row g-3">
       <div class="col-12">
@@ -191,7 +191,7 @@
         </div>
       </div>
       <div class="col-12 mt-2">
-        <button type="submit" class="btn btn-primary">Comprar</button>
+        <button type="submit" class="btn btn-primary" id="btnCart">Comprar</button>
       </div>
     </form>
 
@@ -275,9 +275,9 @@
         <div class="modal-body">
           <div class="container">
 
-            <form>
+            <form class="needs-validation" id="modalValidate">
               <div class="custom-control custom-radio">
-                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input form-control" required>
                 <label class="custom-control-label" for="customRadio1">Tarjeta de Crédito 💳</label>
               </div> <br>
               <div class="row">
@@ -285,9 +285,7 @@
                   <label class="form-label" for="cardNumber">Número de la Tarjeta</label>
                   <input type="text" class="form-control" id="cardNumber">
                 </div>
-              <!-- </div> -->
 
-              <!-- <div class="row"> -->
                 <div class="col">
                   <label class="form-label" for="cardPin">Código de Seguridad</label>
                   <input type="text" class="form-control" id="cardPin">
@@ -303,7 +301,7 @@
 
               <div class="custom-control custom-radio">
                 <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                <label class="custom-control-label" for="customRadio2">Transferencia Bancaria </label>
+                <label class="custom-control-label" for="customRadio2">Transferencia Bancaria 🏦</label>
               </div><br>
 
               <div class="row">
@@ -314,10 +312,10 @@
               </div><br>
             </form>
 
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary">Guardar Cambios</button>
-            </div>
+            <!-- <div class="modal-footer"> -->
+              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> -->
+              <button type="submit" form="modalValidate" class="btn btn-primary" id="save">Guardar Cambios</button>
+            <!-- </div> -->
           </div>
         </div>
       </div>

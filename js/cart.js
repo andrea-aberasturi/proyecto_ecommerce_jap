@@ -1,8 +1,10 @@
 let productCost = 0;
 let productCount = 0;
 let comissionPercentage = 0.13;
+let total = 0;
 let MONEY_SYMBOL = "$";
 let PERCENTAGE_SYMBOL = '%';
+let message = '¡Su compra fue efectuada con éxito!'
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -61,28 +63,27 @@ document.addEventListener("DOMContentLoaded", function (e) {
     //     }
     // }
 
-//Para capturar los eventos change de los radio button y pasarle la función actualiza costo Total
-    document.getElementById('productCost').addEventListener('change', ()=>{
-        productCost =  Number(this.innerHTML);
+    //Para capturar los eventos change de los radio button y pasarle la función actualiza costo Total
+    document.getElementById('productCost').addEventListener('change', () => {
+        productCost = Number(this.innerHTML);
         upDateTotal();
     })
 
-    document.getElementById('premium').addEventListener('change', function(){
+    document.getElementById('premium').addEventListener('change', function () {
         comissionPercentage = 0.15;
         upDateTotal();
     })
 
-    document.getElementById('express').addEventListener('change', function (){
+    document.getElementById('express').addEventListener('change', function () {
         comissionPercentage = 0.07;
         upDateTotal();
     })
 
-    document.getElementById('standardradio').addEventListener('change', function(){
+    document.getElementById('standardradio').addEventListener('change', function () {
         comissionPercentage = 0.05;
         upDateTotal();
     })
 
-    
 });
 //Función calcular subtotal
 function subTotal(valor, unitCost, id, currency) {
@@ -108,17 +109,49 @@ function sumaTotal() {
 }
 
 //Función calcular TOTAL
-function upDateTotal (){
-    let costTotal = document.getElementById('totalCost'); //Capturo elemento HTML para colocar valor del %
-    let comissionCost = document.getElementById('comission');//Capturo el elemento HTML para colocar %
-    let total = document.getElementById('total');//Capturo el elemento HTML para colocar valor TOTAL
-    let subtotal = document.getElementById('productCost').innerHTML;//Capturo el elemento HTML para tomar valor del carrito previo a la suma del envío
+function upDateTotal() {
+    
+    //Capturo los elementos HTML
+    let comission = document.getElementById('comission');
+    let envio = document.getElementById('totalCost');
+    let totals = document.getElementById('total');
 
-    let costTotalToShow =(Math.round(productCost * comissionPercentage * 100) / 100);
+    //Calculo el valor de envio y su respectivo porcentage
+    let valueEnvio = (Math.round(productCost * comissionPercentage * 100)/100);
     let percentage = Math.round((comissionPercentage * 100)) + PERCENTAGE_SYMBOL;
-    let addTotal = parseInt(costTotal) + parseInt(subtotal);
 
-    costTotal.innerHTML =costTotalToShow;
-    comissionCost.innerHTML = percentage;
-    total.innerHTML = addTotal;
+    //Inserto los valores correspondientes dentro del HTML
+    comission.innerHTML = percentage;
+    envio.innerHTML = valueEnvio;
+
+    totals.innerHTML = Math.round(productCost + valueEnvio);
+}
+
+//Función para validar Modal
+let guardar = document.getElementById('save'); //Capturo button Guardar
+let validar = false; // Creo un booleano para confimar validación desde un addeventListener
+
+//Obtengo todos los imputs para verificar que no esten vacios
+let customUn = document.getElementById('customRadio1');
+let customDeux = document.getElementById('customRadio2');
+let cardNumber = document.getElementById('cardNumber');
+let codePin = document.getElementById('cardPin');
+let cardDate = document.getElementById('cardDate');
+let accountNumber = document.getElementById('accountNumber');
+
+
+//Para validar
+//Obtengo todos los elementos necesarios para chequear su estado
+let radioUn = document.getElementById('customRadio1');//button radio Tarjeta de Crédito
+let radioDeux = document.getElementById('customRadio2'); //button radio Transferencia Bancaria
+let cardNumber = document.getElementById('cardNumber');//Input nombre tarjeta
+let pinCode = document.getElementById('cardPin');//Input code seguridad
+let cardDate = document.getElementById('cardDate'); //Input date vencimiento card
+let accountNumber = document.getElementById('accountNumber'); //Input nombre banco
+
+//Comienzo validaciones
+function validate (){ 
+if (radioUn.checked && cardNumber != '' && pinCode != '' && cardDate != ''){
+    
+}
 }
