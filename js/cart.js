@@ -4,11 +4,25 @@ let comissionPercentage = 0.13;
 let total = 0;
 let MONEY_SYMBOL = "$";
 let PERCENTAGE_SYMBOL = '%';
+let modalSave = '¡Sus datos fueron registrados correctamente!';
 let message = '¡Su compra fue efectuada con éxito!'
+
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
+
+    let datosModal = JSON.parse(localStorage.getItem('modalForm'));//Recupero lo que guarde en LocalStorage
+    if (datosModal != null){
+        document.getElementById('cardNumber').value = datosModal.cardNumber;
+        document.getElementById('cardPin').value = datosModal.pinCode;
+        document.getElementById('cardDate').value = datosModal.cardDate;
+        document.getElementById('accountNumber').value = datosModal.accountNumber;
+    }
+    validate()
+
+
     var cart = [];
     //Petición fetch URL dos products
     fetch(CARRT).then(data => data.json())
@@ -17,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
             // console.log(cart);
             table(cart);
         })
-
 
     //Función para mostrar tabla dinamica
     let htmlCarrt = '';
@@ -45,23 +58,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
         //Para desplegar contenido en HTML
         document.getElementById('body').innerHTML = htmlCarrt;
-        // sumaTotal();
-
     }
-    //Otra Función para calcular SubTotal
-    // function sumaTotal() {
-    //     let inputs = document.getElementsByClassName('product');
-    //     for (let input of inputs) {
-    //         input.addEventListener('change', (e) => {
-    //             let cost = parseInt(e.target.dataset.cost);
-    // console.log('El costo es: ' , cost)
-    //             let val = parseInt(e.target.value);
-    //             let i = e.target.getAttribute('id');
-    //             let sumaTotal = cost * val;
-    //             document.getElementById('ici').innerHTML = sumaTotal;
-    //         })
-    //     }
-    // }
 
     //Para capturar los eventos change de los radio button y pasarle la función actualiza costo Total
     document.getElementById('productCost').addEventListener('change', () => {
@@ -89,9 +86,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 function subTotal(valor, unitCost, id, currency) {
     let value = valor * unitCost;
     let costos = document.getElementById('cost' + id);
-    // console.log(costos)
     costos.innerHTML = value + currency;
-    //Otra función aquí
     sumaTotal()
 }
 
@@ -101,16 +96,13 @@ function sumaTotal() {
     //colocar contador
     let suma = 0
     for (let td of tds) {
-        // console.log(parseInt(td.innerHTML));
         suma += parseFloat(td.innerHTML) // sumar a contador recorrido antes del for  
     }
-    // console.log(suma)
     productCost = document.getElementById('productCost').innerHTML = suma;
 }
 
 //Función calcular TOTAL
 function upDateTotal() {
-    
     //Capturo los elementos HTML
     let comission = document.getElementById('comission');
     let envio = document.getElementById('totalCost');
@@ -123,35 +115,40 @@ function upDateTotal() {
     //Inserto los valores correspondientes dentro del HTML
     comission.innerHTML = percentage;
     envio.innerHTML = valueEnvio;
-
     totals.innerHTML = Math.round(productCost + valueEnvio);
 }
 
-//Función para validar Modal
-let guardar = document.getElementById('save'); //Capturo button Guardar
-let validar = false; // Creo un booleano para confimar validación desde un addeventListener
-
-//Obtengo todos los imputs para verificar que no esten vacios
-let customUn = document.getElementById('customRadio1');
-let customDeux = document.getElementById('customRadio2');
-let cardNumber = document.getElementById('cardNumber');
-let codePin = document.getElementById('cardPin');
-let cardDate = document.getElementById('cardDate');
-let accountNumber = document.getElementById('accountNumber');
-
-
-//Para validar
-//Obtengo todos los elementos necesarios para chequear su estado
+// //Para validar Modal
+// //Obtengo todos los elementos necesarios para chequear su estado
+let modal = document.getElementById('modalValidate');//form modal
+let button = document.getElementById('save');//Button guardar cambios
 let radioUn = document.getElementById('customRadio1');//button radio Tarjeta de Crédito
 let radioDeux = document.getElementById('customRadio2'); //button radio Transferencia Bancaria
 let cardNumber = document.getElementById('cardNumber');//Input nombre tarjeta
-let pinCode = document.getElementById('cardPin');//Input code seguridad
-let cardDate = document.getElementById('cardDate'); //Input date vencimiento card
-let accountNumber = document.getElementById('accountNumber'); //Input nombre banco
+let pinCode = document.getElementById('cardPin').value;//Input code seguridad
+let cardDate = document.getElementById('cardDate').value; //Input date vencimiento card
+let accountNumber = document.getElementById('accountNumber').value; //Input nombre banco
+let modalForm = {};//Inicializo objeto para guardar info de ventana modal
 
-//Comienzo validaciones
-function validate (){ 
-if (radioUn.checked && cardNumber != '' && pinCode != '' && cardDate != ''){
-    
+
+//modal validación
+function validate (){
+    if (modalForm != null){
+        button.addEventListener('click',function(){
+            window.location.href = 'cart.html';
+        })
+    }
 }
-}
+
+//Guardar los elementos en localStorage
+modal.addEventListener('submit',function(e){
+    e.preventDefault();
+    // let modalForm = {};//Inicializo objeto para guardar info de ventana modal
+    modalForm.cardNumber = document.getElementById('cardNumber').value;
+    modalForm.pinCode = document.getElementById('cardPin').value;
+    modalForm.cardDate = document.getElementById('cardDate').value;
+    modalForm.accountNumber = document.getElementById('accountNumber').value;
+
+    localStorage.setItem('modalForm', JSON.stringify(modalForm));//Almaceno en LocalStorage
+})
+
