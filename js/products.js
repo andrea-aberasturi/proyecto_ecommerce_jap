@@ -1,11 +1,12 @@
 const ORDER_ASC_BY_COST = "⬆$";
 const ORDER_DESC_BY_COST = "⬇$";
 const ORDER_BY_COUNT = "Cant.";
-var currentProductsArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
 var maxCount = undefined;
 
+
+//Para ordenar según criterio
 function sortProducts(criteria, array) {
   let result = [];
   if (criteria === ORDER_ASC_BY_COST) {
@@ -34,7 +35,6 @@ function sortProducts(criteria, array) {
   return result;
 }
 
-var arraysCars = []; //Creo un Array para luego agregarle contenido
 async function mostrar_cars(criteria) {
   let promise = await fetch('https://japdevdep.github.io/ecommerce-api/product/all.json');//Petición fetch
   let data = await promise.json();  //obtengo en fmato json
@@ -42,7 +42,7 @@ async function mostrar_cars(criteria) {
   data = sortProducts(criteria, data)
   let contenido = "";
   for (let index = 0; index < data.length; index++) {
-    let elemento = data[index];
+    let elemento = data[index];//Parametrizo, evito el uso de corchetes repetitivos
 
     if (((minCount == undefined) || (minCount != undefined && parseInt(elemento.cost) >= minCount)) &&
       ((maxCount == undefined) || (maxCount != undefined && parseInt(elemento.cost) <= maxCount))) {
@@ -50,7 +50,7 @@ async function mostrar_cars(criteria) {
       contenido += `
      <div class="col-md-6">
      <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
-     <h3 class="m-3">${elemento.name} </h3>
+     <h3 class="m-3" id = '${index}'>${elemento.name} </h3>
        <img class="bd-placeholder-img card-img-top"  src= ${elemento.imgSrc} alt= ${elemento.description} >
        <div class="card-body">
          <p class="card-text">$ ${elemento.cost} ${elemento.currency}.</p>
@@ -62,7 +62,6 @@ async function mostrar_cars(criteria) {
      `
     }
     document.getElementById('prod-container').innerHTML = contenido;
-
   }
 }
 
@@ -72,22 +71,25 @@ async function mostrar_cars(criteria) {
 //elementos HTML presentes. d-none ocultar de pantalla
 document.addEventListener("DOMContentLoaded", function (e) {
 
-  //Research
-const research =  document.getElementById('search'); //capturo el input del buscador
-const button = document.getElementById('button'); //capturo el boton
+  //Serch
+ let buscador = document.getElementById('search'); //Capturo el input buscador
+ let h3 = document.querySelectorAll('h3'); //Capturo los h3 para buscar por titulos
 
-const filter = ()=>{
-  const contenido  = research.value.toLowerCase();
-  console.log(contenido);
-
-  for (let arraysCar  of arraysCars){
-    let name = arraysCar.name.toLowerCase();
-    if(name.indexOf(contenido) !== -1){
-      
+ buscador.addEventListener('keyup', (e) =>{
+   let text = e.target.value;
+  //  console.log(text);
+    let re =new RegExp(text,'i');
+    for (let i =0; i<h3.length; i++){
+      let datos = h3[i];
+      // console.log(datos);
+      if (re.test(datos.innerText)){
+        datos.classList.remove('d-none');
+      }else{
+        console.log(datos);
+        datos.classList.add('d-none');
+      }
     }
-  }
-}
-button.addEventListener('click', filter);
+ })
 
 document.getElementById('sortAsc').addEventListener('click', function () { //Orden ascendente
   mostrar_cars(ORDER_ASC_BY_COST);
