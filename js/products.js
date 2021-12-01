@@ -36,7 +36,7 @@ function sortProducts(criteria, array) {
 }
 
 async function mostrar_cars(criteria) {
-  let promise = await fetch('https://japdevdep.github.io/ecommerce-api/product/all.json');//Petición fetch
+  let promise = await fetch(PRODUCTS_URL);//Petición fetch
   let data = await promise.json();  //obtengo en fmato json
 
   data = sortProducts(criteria, data)
@@ -71,7 +71,7 @@ async function mostrar_cars(criteria) {
 //elementos HTML presentes. d-none ocultar de pantalla
 document.addEventListener("DOMContentLoaded", function (e) {
 
-  //Serch
+  //Search
  let buscador = document.getElementById('search'); //Capturo el input buscador
  let h3 = document.querySelectorAll('h3'); //Capturo los h3 para buscar por titulos
 
