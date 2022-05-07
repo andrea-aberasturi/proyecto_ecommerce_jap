@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <!-- google websites -->
   <meta name="google-signin-client_id"
-    content="739202395828-os00m39mtfgooamoleohrg8qs39anhtj.apps.googleusercontent.com">
+    content="739202395828-9tpq3dmp67ufke07bi5nrfu6ojdl9svu.apps.googleusercontent.com">
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
@@ -82,6 +82,8 @@
       console.log('Name: ' + profile.getName());
       console.log('Image URL: ' + profile.getImageUrl());
       console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+      var id_token = googleUser.getAuthResponse().id_token;
+      console.log(id_token)
     }</script>
   <script src="js/login.js"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>

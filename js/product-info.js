@@ -16,7 +16,7 @@ function showImagesCarrusel(array) {
 
         html += `
               <div class="carousel-item">
-                <img src="${images} " class="d-block w-60 img-fluid"  alt="">
+                <img src="${images} " class="d-block w-60 img-fluid"  alt="muestras">
               </div>
             `
 
@@ -72,24 +72,11 @@ function voirRelated (allProducts, relatedProduct){
             <p class="card-text"></p>
           </div>
           </a>
-          `
-          
+          `    
     }
 
     document.getElementById('related').innerHTML = add;
 }
-
-// let relateds = [];
-// function voirRelated(param) {
-//     let add = '';
-//     for (let i =0; i<param.length; i++){
-//         let relacionado = param[i];
-//         add += `
-//         <h5>${relateds[relacionado]} </h5>`
-//     }
-//     document.getElementById('related').innerHTML = add;
-// }
-
 
 // Obtengo el Json de Comentarios
 getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (coment) {
@@ -114,6 +101,7 @@ function voirComment(array) {
                  <p class="text-end"> ${comment.user}  &emsp;  ${comment.dateTime} </p>
           `
         document.getElementById('comentarios').innerHTML += voir;
+        document.getElementById('formulario').reset();
     }
 }
 
@@ -136,30 +124,43 @@ function stars(star) {
 
 //Capturo el comentario e inserto en html
 
-let newcomment = document.getElementById('newComentario');
-let insertar = document.getElementById('comentarios');
-let usuario = localStorage.getItem('user');
-let hora = new Date();
-var day = hora.getDate();
-var year = hora.getFullYear();
-var month = hora.getMonth();
-var heur = hora.getHours();
-var minuit = hora.getUTCMinutes();
-
-
-function commentrio() {
-    let capturar = newcomment.value;
-    let estrellitas = document.getElementById('contador').value;
-    // console.log(estrellitas);
-    // console.log(capturar);
-
-    insertar.innerHTML += `<hr class="my-3">
-                        ${capturar}<br><br>
-                    <div class="d-flex w-100 justify-content-between">
-                           ${usuario} &emsp; ${year}-${month}-${day} ${heur}:${minuit}
-                         <p>${stars(estrellitas)}</p>
-                     </div>`
+let comments = [];
+function commentario(){
+    let date = new Date();
+    let comment = {
+        score: document.getElementById('contador').value,
+        description: document.getElementById('newComentario').value,
+        user: localStorage.getItem('user'),
+        dateTime: date
+    }
+    comments.push(comment);
+    voirComment(comments);
 }
+
+// let newcomment = document.getElementById('newComentario');
+// let insertar = document.getElementById('comentarios');
+// let usuario = localStorage.getItem('user');
+// let hora = new Date();
+// var day = hora.getDate();
+// var year = hora.getFullYear();
+// var month = hora.getMonth();
+// var heur = hora.getHours();
+// var minuit = hora.getUTCMinutes();
+
+// function commentrio() {
+//     let capturar = newcomment.value;
+//     let estrellitas = document.getElementById('contador').value;
+//     // console.log(estrellitas);
+//     // console.log(capturar);
+
+//     insertar.innerHTML += `<hr class="my-3">
+//                         ${capturar}<br><br>
+//                     <div class="d-flex w-100 justify-content-between">
+//                            ${usuario} &emsp; ${year}-${month}-${day} ${heur}:${minuit}
+//                          <p>${stars(estrellitas)}</p>
+//                      </div>`
+
+// }
 
 
 var arraysCars = [];
@@ -186,26 +187,3 @@ function mostrarCars(array) {
 
     }
 }
-
-
-
-  // var getJSONData = async function(url){
-  //     var result = {};
-  //     try {
-  //     const response = await fetch("https://japdevdep.github.io/ecommerce-api/product/all.json") //hacerlo generico url solo
-  //       ;
-  //     if (response.ok) {
-  //       return response.json();
-  //     } else {
-  //       throw Error(response.statusText);
-  //     }
-  //     const response_1 = undefined;
-  //     result.status = 'ok';
-  //     result.data = response_1;
-  //     return result;
-  //   } catch (error) {
-  //     result.status = 'error';
-  //     result.data = error;
-  //     return result;
-  //   }
-  // }

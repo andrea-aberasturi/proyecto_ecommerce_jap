@@ -72,24 +72,26 @@ async function mostrar_cars(criteria) {
 document.addEventListener("DOMContentLoaded", function (e) {
 
   //Search
- let buscador = document.getElementById('search'); //Capturo el input buscador
- let h3 = document.querySelectorAll('h3'); //Capturo los h3 para buscar por titulos
-
- buscador.addEventListener('keyup', (e) =>{
-   let text = e.target.value;
-  //  console.log(text);
-    let re =new RegExp(text,'i');
-    for (let i =0; i<h3.length; i++){
-      let datos = h3[i];
-      // console.log(datos);
-      if (re.test(datos.innerText)){
-        datos.classList.remove('d-none');
-      }else{
-        console.log(datos);
-        datos.classList.add('d-none');
-      }
-    }
- })
+  // let buscador = document.getElementById('search'); //Capturo el input buscador
+  // // let h3 = document.getElementsByTagName(h3); //Capturo los h3 para buscar por titulos
+  // let products = data;
+ 
+ 
+  // buscador.addEventListener('keyup', (e) =>{
+  //   let text = e.target.value;
+  //  //  console.log(h3);
+  //    let re =new RegExp(text,'i');
+  //    for (let i =0; i<products.length; i++){
+  //      let datos = products[i];
+  //      console.log(datos);
+  //      if (re.test(datos.innerText)){
+  //        datos.classList.remove('d-none');
+  //      }else{
+  //        console.log(datos);
+  //        datos.classList.add('d-none');
+  //      }
+  //    }
+  // })
 
 document.getElementById('sortAsc').addEventListener('click', function () { //Orden ascendente
   mostrar_cars(ORDER_ASC_BY_COST);
